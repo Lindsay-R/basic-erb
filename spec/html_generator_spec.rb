@@ -32,7 +32,7 @@ describe HTMLGenerator do
 
   describe "#button" do
     it "returns a string of html that has a button with text" do
-      skip
+
       button_html = strip_whitespace(
         html_generator.button("button-text")
       )
@@ -42,10 +42,9 @@ describe HTMLGenerator do
 
     context "with a class attribute given" do
       it "returns the button with a class attribute" do
-        skip
-        button_html = strip_whitespace(
+
+        button_html =
           html_generator.button("flashy-button", :class => "flashy_class")
-        )
 
         expect(button_html).to eq("<button class='flashy_class'>flashy-button</button>")
       end
