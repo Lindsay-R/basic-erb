@@ -3,8 +3,8 @@ require "erb_generator"
 class HTMLGenerator < ERBGenerator
 
  def section(text)
-   template = "<section> <%= my_text %> </section>"
-   options_hash = {:locals => {:my_text => text}}
+   template = "<section> <%= some_text%> </section>"
+   options_hash = {:locals => {:some_text => text}}
    erb template, options_hash
  end
 
@@ -21,10 +21,20 @@ class HTMLGenerator < ERBGenerator
     erb template, options_hash
   end
 
-  def button(text)
-  template = "<button> <%= button_txt %> </button>"
+  def button(text, options = {})
+  #template = "<button> <%= button_txt %> </button>"
+    template = <<-TEMPLATE
 
-    options_hash = {:locals => {:button_txt => text}}
+    <% if options_hash[:class] %>
+    <button class= '<%= options_hash[:class] %>' >
+    <% else %>
+    <button>
+    <% end %>
+    <%= button_txt %></button>
+    TEMPLATE
+
+
+    options_hash = {:locals => {:button_txt => text, :options_hash => options}}
     erb template, options_hash
   end
 

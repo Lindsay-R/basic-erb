@@ -43,10 +43,10 @@ describe HTMLGenerator do
     context "with a class attribute given" do
       it "returns the button with a class attribute" do
 
-        button_html =
+        button_html = strip_whitespace(
           html_generator.button("flashy-button", :class => "flashy_class")
-
-        expect(button_html).to eq("<button class='flashy_class'>flashy-button</button>")
+        )
+        expect(button_html).to eq("<buttonclass='flashy_class'>flashy-button</button>")
       end
     end
   end
