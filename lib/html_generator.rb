@@ -1,6 +1,9 @@
 require "erb_generator"
 
 class HTMLGenerator < ERBGenerator
+  def initialize(layout = nil)
+    @layout = layout || "CONTENT"
+  end
 
  def section(text)
    template = "<section> <%= some_text%> </section>"
@@ -37,5 +40,14 @@ class HTMLGenerator < ERBGenerator
     options_hash = {:locals => {:button_txt => text, :options_hash => options}}
     erb template, options_hash
   end
+
+
+
+  def layout(inner_html)
+    template = "<main><section> '<%= something %>' </section></main>"
+    options_hash = {:locals => {:something => inner_html}}
+    erb template, options_hash
+  end
+
 
 end #end of class
