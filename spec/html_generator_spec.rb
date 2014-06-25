@@ -21,7 +21,7 @@ describe HTMLGenerator do
 
   describe "#unordered_list" do
     it "returns a string of html that contains the list" do
-      skip
+
       list_html = strip_whitespace(
         html_generator.unordered_list(["item1", "item2", "item3"])
       )
